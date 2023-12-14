@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<!-- browser title -->
+{% block title %} Detalhe da Denúncia {% endblock %}
+
+<!-- breadcrumb -->
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'base:index' %}">Início</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'example:example-list' %}">Denúncias</a></li>
+  <li class="breadcrumb-item active">Detalhe</li>
+{% endblock %}
+
+{% block content %}
+<div class="card card-primary card-outline">
+  <div class="card-header">
+    <h3 class="card-title">Detalhes da Denúncia</h3>
+  </div>
+  <div class="card-body">
+    <strong>Nome:</strong> {{ example.name }}<br>
+    <strong>Local:</strong> {{ example.local }} <br>
+    <strong>Data e Hora:</strong> {{ example.timestamp }} <br>
+    <strong>Descrição:</strong> {{ example.description }} <br>
+  </div>
+  <hr>
+  <div class="mb-3 ml-2">
+    <a href="{% url 'example:example-update' example.id %}" class="mx-2">
+      <button type="button" class="btn btn-primary"> Editar Denúncia </button>
+    </a>
+    <a href="{% url 'example:example-list' %}" class="mx-2">
+      <button type="button" class="btn btn-warning"> Cancelar </button>
+    </a>
+    <a href="{% url 'example:example-delete' example.id %}" class="mx-2">
+      <button type="button" class="btn btn-danger"> Remover </button>
+    </a>
+  </div>
+</div>
+{% endblock %}

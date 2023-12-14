@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<!-- browser title -->
+{% block title %} Lista de Viagens {% endblock %}
+
+<!-- breadcrumb -->
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'base:index' %}">Início</a></li>
+  <li class="breadcrumb-item active">Viagens</li>
+{% endblock %}
+
+{% block content %}
+<div class="card card-primary card-outline">
+  <div class="card-header">
+    <h3 class="card-title">Lista de Viagens</h3>
+  </div>
+  <div class="card-body">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" id="searchInput" placeholder="Pesquisar...">
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Destino</th>
+          <th>Data da ida</th>
+          <th>Data da volta</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for viagem in viagens_cliente %}
+        <tr>
+          <td>{{ viagem.destino }}</td>
+          <td>{{ viagem.dataida }}</td>
+          <td>{{ viagem.datavolta }}</td>
+          <td>
+            <a href="{% url 'example:viagens-detail' pk=viagem.pk %}" class="btn btn-sm btn-outline-info">Ver detalhes</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#searchInput').on('keyup', function() {
+      const searchText = $(this).val().toLowerCase().trim();
+      $('tbody tr').each(function() {
+        const text = $(this).text().toLowerCase();
+        const tableRow = $(this);
+
+        if (text.includes(searchText)) {
+          tableRow.show();
+        } else {
+          tableRow.hide();
+        }
+      });
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static %}
+
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!--App Example-->
+        <br>
+        <br>
+        <li class="nav-item">
+            <a href="{% url 'example:clientes-create' %}" class="nav-link">
+                <i class="far fas fa-user-plus nav-icon"></i>
+                <p>Cadastrar</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'example:clientes-list-datatable' %}" class="nav-link">
+                <i class="far fas fa-users nav-icon"></i>
+                <p>Lista de clientes</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'example:clientes-expiracao' %}" class="nav-link">
+                <i class="far fas fa-portrait nav-icon"></i>
+                <p>Passaportes a expirar</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'example:clientes-aniversariantes' %}" class="nav-link">
+                <i class="far fas fa-birthday-cake nav-icon"></i>
+                <p>Aniversariantes do dia</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'base:index' %}" class="nav-link">
+                <i class="far fas fa-clipboard-list nav-icon"></i>
+                <p>Passageiros</p>
+            </a>
+        </li>
+    </ul>
+</nav>

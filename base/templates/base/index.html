@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-12 col-lg-8">
+            <div class="card border border-primary">
+                <div class="card-header d-flex justify-content-center border-bottom border-primary">
+                    <h5 class="card-title text-wrap text-break mb-0">Passageiros de ontem - {{ ontem }}</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for dado in passageiros_ontem %}
+                            <li class="list-group-item border-bottom border-primary text-center">{{ dado.cliente.nome }} {{ dado.cliente.sobrenome }} - {{ dado.destino }}</li>
+                        {% empty %}
+                            <li class="list-group-item text-center">Nenhum passageiro viajou ontem.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 col-md-12 col-lg-8">
+            <div class="card border border-primary">
+                <div class="card-header d-flex justify-content-center border-bottom border-primary">
+                    <h5 class="card-title text-wrap text-break mb-0">Passageiros de hoje - {{ hoje }}</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for dado in passageiros_hoje %}
+                            <li class="list-group-item border-bottom border-primary text-center">{{ dado.cliente.nome }} {{ dado.cliente.sobrenome }} - {{ dado.destino }}</li>
+                        {% empty %}
+                            <li class="list-group-item text-center">Nenhum passageiro viaja hoje.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 col-md-12 col-lg-8">
+            <div class="card border border-primary">
+                <div class="card-header d-flex justify-content-center border-bottom border-primary">
+                    <h5 class="card-title text-wrap text-break mb-0">Passageiros de amanhã - {{ amanha }}</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for dado in passageiros_amanha %}
+                            <li class="list-group-item border-bottom border-primary text-center">{{ dado.cliente.nome }} {{ dado.cliente.sobrenome }} - {{ dado.destino }}</li>
+                        {% empty %}
+                            <li class="list-group-item text-center">Nenhum passageiro vai viajar amanhã.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

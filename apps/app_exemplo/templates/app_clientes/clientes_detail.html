@@ -1,0 +1,48 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<!-- browser title -->
+{% block title %} Detalhe do cliente {% endblock %}
+
+<!-- breadcrumb -->
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'base:index' %}">Início</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'example:clientes-list-datatable' %}">Clientes</a></li>
+  <li class="breadcrumb-item active">Detalhe</li>
+{% endblock %}
+
+{% block content %}
+<div class="card card-primary card-outline">
+  <div class="card-header">
+    <h3 class="card-title">Detalhes do cliente</h3>
+  </div>
+  <div class="card-body">
+    <strong>Nome:</strong> {{ dados.nome }}<hr class="border-primary" >
+    <strong>Sobrenome:</strong> {{ dados.sobrenome }}<hr class="border-primary" >
+    <strong>Data de Nascimento:</strong> {{ dados.datanascimento }}<hr class="border-primary" >
+    <strong>Passaporte:</strong> {{ dados.passaporte }} <hr class="border-primary" >
+    <strong>Data de Validade:</strong> {{ dados.datavalidade }} <hr class="border-primary" >
+    <strong>Contato:</strong> {{ dados.contato }} <hr class="border-primary" >
+    <strong>Endereço:</strong> {{ dados.endereco }} <hr class="border-primary" >
+    <strong>CPF ou CNPJ:</strong> {{ dados.cpfcnpj }} <hr class="border-primary" >
+    <strong>Email:</strong> {{ dados.email }} <hr class="border-primary" >
+  </div>
+  <div class="mb-3 ml-2">
+    <a href="{% url 'example:viagens-create' cliente_id=dados.pk %}" class="mx-2">
+      <button type="button" class="btn btn-success"> Adicionar Viagem para Cliente </button>
+    </a>    
+    <a href="{% url 'example:viagens-list' cliente_id=dados.pk %}" class="mx-2">
+      <button type="button" class="btn btn-info">Viagens do Cliente </button>
+    </a>    
+    <a href="{% url 'example:clientes-update' dados.id %}" class="mx-2">
+      <button type="button" class="btn btn-primary"> Editar cliente </button>
+    </a>
+    <a href="{% url 'example:clientes-list-datatable' %}" class="mx-2">
+      <button type="button" class="btn btn-warning"> Cancelar </button>
+    </a>
+    <a href="{% url 'example:clientes-delete' dados.id %}" class="mx-2">
+      <button type="button" class="btn btn-danger"> Remover </button>
+    </a>
+  </div>
+</div>
+{% endblock %}

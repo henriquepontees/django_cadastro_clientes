@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="container"> <!-- Container principal para centralizar o conteúdo -->
+
+    <div class="row justify-content-center mb-3">
+        <div class="col-lg-8">
+            <input type="text" id="searchInput" class="form-control border border-primary" placeholder="Pesquisar passaportes...">
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center"> <!-- Row para alinhar o conteúdo no centro horizontal -->
+        <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1 ">
+            <div class="card border border-primary">
+                <div class="card-header d-flex justify-content-center border-bottom border-primary">
+                    <h5 class="card-title text-wrap text-break mb-0">Passaportes expirados ou próximos a expirar.</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for dado in expiring_soon_clientes %}
+                            <li class="list-group-item border-bottom border-primary text-center ">{{ dado.nome }} {{ dado.sobrenome }} - {{ dado.datavalidade }}</li>
+                        {% empty %}
+                            <li class="list-group-item text-center">Nenhum passaporte está próximo de expirar.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchInput').on('keyup', function() {
+            const searchText = $(this).val().toLowerCase().trim();
+            $('.list-group-item').each(function() {
+                const text = $(this).text().toLowerCase();
+                const listItem = $(this);
+
+                if (text.includes(searchText)) {
+                    listItem.show();
+                } else {
+                    listItem.hide();
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

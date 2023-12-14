@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<!-- browser title -->
+{% block title %} Detalhes da viagem {% endblock %}
+
+<!-- breadcrumb -->
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'base:index' %}">Início</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'example:clientes-list-datatable' %}">Clientes</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'example:viagens-list' cliente_id=viagem.cliente.pk %}">Viagens do Cliente</a></li>
+  <li class="breadcrumb-item active">Detalhes da Viagem</li>
+{% endblock %}
+
+{% block content %}
+<div class="card card-primary card-outline">
+  <div class="card-header">
+    <h3 class="card-title">Detalhes da Viagem</h3>
+  </div>
+  <div class="card-body">
+    <strong>Destino:</strong> {{ viagem.destino }}<hr class="border-primary">
+    <strong>Data da ida:</strong> {{ viagem.dataida }}<hr class="border-primary">
+    <strong>Data da volta:</strong> {{ viagem.datavolta }}<hr class="border-primary">
+  </div>
+  <div class="mb-3 ml-2">
+    <a href="{% url 'example:viagens-update' pk=viagem.pk %}" class="mx-2">
+      <button type="button" class="btn btn-primary">Editar Viagem</button>
+  </a>
+    <a href="{% url 'example:viagens-delete' pk=viagem.pk %}" class="mx-2">
+      <button type="button" class="btn btn-danger">Excluir Viagem</button>
+    </a>
+    <a href="{% url 'example:viagens-list' cliente_id=viagem.cliente_id %}" class="mx-2">
+      <button type="button" class="btn btn-warning">Cancelar</button>
+    </a>
+  </div>
+</div>
+{% endblock %}

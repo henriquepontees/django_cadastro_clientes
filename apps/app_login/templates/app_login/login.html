@@ -1,0 +1,66 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="{% static 'adminlte-3.1.0/plugins/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'adminlte-3.1.0/css/adminlte.min.css' %}">
+    <link rel="stylesheet" href="{% static '/sti/css/base.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+<style>
+    body {
+        background-color: rgb(24, 24, 94);
+    }
+
+    .card {
+        max-width: 300px; /* Largura máxima do card */
+        margin: 0 auto; /* Centraliza horizontalmente */
+        background-color: rgb(204, 204, 246);
+    }
+
+    .form-control {
+        width: 100%; /* Define a largura dos campos */
+        border: solid 10px black;
+    }
+
+    .btn.btn-primary {
+        width: 100%; /* Define a largura do botão */
+        border: solid 1px black;
+    }
+</style>
+
+{% block content %}
+<form class="p-3" method='post'>
+    {% csrf_token %}
+<div class="container">
+    <div class="card p-3">
+        <img src="{% static 'sti/img/chacon-logo.png' %}" class="card-img-top" alt="...">
+        <div class="card-body"> <br> <br>
+            <div class="mb-3">
+                <input type="text" class="form-control border border-primary" name="username" placeholder="Usuário">
+            </div> <br>
+            <div class="mb-3">
+                <input type="password" class="form-control border border-primary" name="password" placeholder="Senha">
+            </div>
+             <br> <br>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}
+
+<!-- javascripts -->
+{% block js %}{% endblock %}
+</body>
+</html>

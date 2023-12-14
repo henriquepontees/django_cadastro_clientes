@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+<!-- browser title -->
+{% block title %} Denúncias {% endblock %}
+
+<!-- styles -->
+{% block style_sheet %}
+<link rel="stylesheet" href="{% static 'adminlte-3.1.0/plugins/select2/css/select2.min.css' %}">
+<link rel="stylesheet" href="{% static 'adminlte-3.1.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'adminlte-3.1.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+{% endblock %}
+
+<!-- context title -->
+{% block title-header %} Gestão de Denúncias {% endblock %}
+
+<!-- breadcrumb -->
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'base:index' %}">Início</a></li>
+  <li class="breadcrumb-item active">Cadastro de Denúncia</li>
+{% endblock %}
+
+{% block content %}
+<div class="card card-primary card-outline">
+  <div class="card-header">
+    <h3 class="card-title">Adicionar Denúncia</h3>
+  </div>
+  <div class="card-body">
+    {% include 'app_exemplo/_form_example.html' %}
+  </div>
+</div>
+{% endblock %}
+
+<!-- javascripts -->
+{% block js %}{% endblock %}

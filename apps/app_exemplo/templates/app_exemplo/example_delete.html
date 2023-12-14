@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<!-- browser title -->
+{% block title %} Excluir Denúncia {% endblock %}
+
+<!-- breadcrumb -->
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'base:index' %}">Início</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'example:example-list' %}">Denúncias</a></li>
+  <li class="breadcrumb-item active">Excluir</li>
+{% endblock %}
+
+{% block content %}
+<div class="card card-danger card-outline">
+  <div class="card-header">
+    <h3 class="card-title">Excluir Denúncia</h3>
+  </div>
+  <div class="card-body">
+    <p>Tem certeza de que deseja excluir a Denúncia "{{ example.nome }}"?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Excluir</button>
+      <a href="{% url 'example:example-list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

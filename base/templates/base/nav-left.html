@@ -1,0 +1,44 @@
+{% load static %}
+<style>
+  .center-img {
+    margin: 0 0 0 12px;
+    border-radius: 3px;
+  }
+  .main-sidebar.sidebar-dark-primary.elevation-4{
+    background-color: rgb(24, 24, 94);
+  }
+  .form-control.form-control-sidebar{
+    background-color: rgb(24, 24, 94);
+  }
+  .btn.btn-sidebar{
+    background-color: rgb(24, 24, 94);
+
+  }
+</style>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{% url 'base:index' %}" class="brand-link">
+    <img src="{% static 'sti/img/chacon-logo.png' %}" alt="COINT Logo" class="brand-image img-circle elevation-3">
+    <span class="brand-text font-weight-light">Portal Chacon Turismo</span>
+  </a>
+<br><br>
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Pesquisar..." aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {% include 'base/nav-left-content.html' %}
+  </div>
+  <!-- /.sidebar -->
+</aside>
