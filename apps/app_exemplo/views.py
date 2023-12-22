@@ -121,11 +121,17 @@ class ClientesListJson(BaseDatatableView):
     """
     model = models.Clientes
     columns = ['id','nome', 'sobrenome', 'datanascimento', 'passaporte', 'datavalidade']  # Adicione aqui os campos que deseja exibir
-    
+
 
     def render_column(self, row, column):
         # Esta função permite personalizar a saída dos dados
-        return super(ClientesListJson, self).render_column(row, column)
+        if column in ['datanascimento', 'datavalidade']:
+            # Ajuste os nomes das colunas conforme necessário
+            date = getattr(row, column)
+            if date:
+                formatted_date = dateformat.format(date, 'd/m/Y')
+                return formatted_date
+        return super().render_column(row, column)
 
 
 @method_decorator(login_required, name='dispatch')
