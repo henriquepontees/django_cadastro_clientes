@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l#@v76@zhn&h*$vx6y6d=r04)@urcud(k#7q7#r^u8sw#jrslz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['henriquechaconturismo.pythonanywhere.com']
 
 
 # Application definition
@@ -131,8 +131,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'base/static/']
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -149,10 +148,13 @@ REST_FRAMEWORK = {
     ]
 }
 
-
 SITE_ID = 1
 
 LOGIN_URL = 'login:login'
 
 LOGIN_REDIRECT_URL = 'base:index'
 
+MEDIA_ROOT = '/home/henriquechaconturismo/django_tutorial/media'
+MEDIA_URL = '/media/'
+STATIC_ROOT = '/home/henriquechaconturismo/django_tutorial/base/static'
+STATIC_URL = '/static/'
