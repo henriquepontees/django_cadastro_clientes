@@ -16,6 +16,9 @@
     <h3 class="card-title">Lista de Viagens</h3>
   </div>
   <div class="card-body">
+    <div class="mb-3">
+      <button class="btn btn-primary" id="printBtn">Imprimir Lista</button>
+    </div>
     <div class="input-group mb-3">
       <input type="text" class="form-control" id="searchInput" placeholder="Pesquisar...">
     </div>
@@ -48,6 +51,27 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
+    $('#searchInput').on('keyup', function() {
+      const searchText = $(this).val().toLowerCase().trim();
+      $('tbody tr').each(function() {
+        const text = $(this).text().toLowerCase();
+        const tableRow = $(this);
+
+        if (text.includes(searchText)) {
+          tableRow.show();
+        } else {
+          tableRow.hide();
+        }
+      });
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $('#printBtn').click(function() {
+      window.print();
+    });
+
     $('#searchInput').on('keyup', function() {
       const searchText = $(this).val().toLowerCase().trim();
       $('tbody tr').each(function() {
